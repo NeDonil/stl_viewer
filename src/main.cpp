@@ -1,7 +1,17 @@
 #include <iostream>
 
+#include "Log.h"
+
 int main()
 {
-	std::cout << "Hello world" << std::endl;
+	Log::Init();
+
+	CORE_WARNING("Hello world");
+	CORE_CRITICAL("Hello world");
+	CORE_INFO("Hello world");
+	CORE_TRACE("Hello world");
+	CORE_ERROR("Hello world");
+
+	system("pause");
 	return 0;
 }
