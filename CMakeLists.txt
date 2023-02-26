@@ -24,7 +24,10 @@ file(GLOB all_sources
     "src/Core/*.cpp"
     "src/Graphics/*.h"
     "src/Graphics/*.cpp"
-
+    "src/Platform/OpenGL/*.h"
+    "src/Platform/OpenGL/*.cpp"
+    "src/ViewerApplication/*.h"
+    "src/ViewerApplication/*.cpp"
 )
 
 add_executable(stl_viewer

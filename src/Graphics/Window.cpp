@@ -14,7 +14,7 @@ namespace Viewer
 
 	Scope<Window> Window::Create(const WindowProps& props)
 	{
-		return std::make_unique<Window>(props);
+		return CreateScope<Window>(props);
 	}
 
 	Window::Window(const WindowProps& props)
