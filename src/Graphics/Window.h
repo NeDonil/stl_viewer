@@ -2,6 +2,7 @@
 
 #include <string>
 #include <Core\Core.h>
+#include <Graphics\GraphicsContext.h>
 
 struct GLFWwindow;
 
@@ -44,6 +45,7 @@ namespace Viewer
 		virtual void Shutdown();
 	private:
 		GLFWwindow* m_Window;
+		Scope<GraphicsContext> m_Context;
 
 		struct WindowData
 		{
