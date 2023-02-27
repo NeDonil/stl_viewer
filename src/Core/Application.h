@@ -4,6 +4,7 @@
 #include <Core/LayerStack.h>
 #include <Core/Timestep.h>
 #include <Graphics/Window.h>
+#include <ImGui/ImGuiLayer.h>
 
 namespace Viewer
 {
@@ -25,6 +26,7 @@ namespace Viewer
 		inline static Application& Get() { return *s_Instance; }
 	private:
 		Scope<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		bool m_Minimized = false;
 		LayerStack m_LayerStack;

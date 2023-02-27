@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 add_subdirectory(vendor/spdlog)
 add_subdirectory(vendor/glfw)
 add_subdirectory(vendor/Glad)
+add_subdirectory(vendor/imgui)
 
 add_definitions(-DGLFW_INCLUDE_NONE -DENABLE_ASSERTS)
 
@@ -15,6 +16,7 @@ include_directories(
     vendor/glfw/include
     vendor/Glad/include
     vendor/glm
+    vendor/imgui
     )
 
 file(GLOB all_sources
@@ -28,11 +30,13 @@ file(GLOB all_sources
     "src/Platform/OpenGL/*.cpp"
     "src/ViewerApplication/*.h"
     "src/ViewerApplication/*.cpp"
+    "src/ImGui/*.cpp"
+    "src/ImGui/*.h"
 )
 
 add_executable(stl_viewer
     ${all_sources}
 )
 
-target_link_libraries(stl_viewer spdlog glfw Glad)
+target_link_libraries(stl_viewer spdlog glfw Glad imgui)
 

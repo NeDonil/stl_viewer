@@ -2,6 +2,7 @@
 #include "Window.h"
 #include "Core\Log.h"
 #include "GLFW\glfw3.h"
+#include "Core\Application.h"
 
 namespace Viewer
 {
@@ -63,7 +64,7 @@ namespace Viewer
 
 		glfwSetWindowCloseCallback(m_Window, [](GLFWwindow* window)
 			{
-				//Todo close callback
+				Application::Get().Close();
 			});
 
 		glfwSetKeyCallback(m_Window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
