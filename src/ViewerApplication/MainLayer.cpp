@@ -25,6 +25,31 @@ namespace Viewer
 		fbSpec.Height = 720;
 
 		m_Framebuffer = Framebuffer::Create(fbSpec);
+
+		m_TextureShader = Shader::Create("assets/shaders/Texture.glsl");
+		m_TextureShader->Bind();
+
+		va = VertexArray::Create();
+
+		vb = VertexBuffer::Create(3 * sizeof(Vertex));
+		vb->SetLayout({
+			{ShaderDataType::Float3, "Position"}
+			});
+
+		Vertex vertices[3];
+
+		vertices[0].Position = { -0.5f, -0.5f, 0.5f };
+		vertices[1].Position = {  0.0f,  0.5f, 0.5f };
+		vertices[2].Position = {  0.5f, -0.5f, 0.5f };
+
+		vb->SetData(vertices, sizeof(vertices));
+
+		va->AddVertexBuffer(vb);
+
+		uint32_t triangleIndices[] = { 0, 1, 2 };
+
+		ib = IndexBuffer::Create(triangleIndices, 3);
+		va->SetIndexBuffer(ib);
 	}
 
 	void MainLayer::OnDetach()
@@ -123,8 +148,11 @@ namespace Viewer
 		m_Framebuffer->Bind();
 		Viewer::RenderCommand::Clear();
 
+		RenderCommand::DrawIndexed(va, 3);
+
 		m_Framebuffer->Unbind();
 	}
+
 
 	MainLayer::~MainLayer()
 	{
