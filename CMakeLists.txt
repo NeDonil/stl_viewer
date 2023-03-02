@@ -40,3 +40,11 @@ add_executable(stl_viewer
 
 target_link_libraries(stl_viewer spdlog glfw Glad imgui)
 
+message(${CMAKE_CURRENT_BINARY_DIR})
+
+add_custom_command(
+        TARGET stl_viewer POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+                ${CMAKE_CURRENT_SOURCE_DIR}/assets
+                ${CMAKE_CURRENT_BINARY_DIR}/assets )
+
