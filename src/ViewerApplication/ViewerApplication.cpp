@@ -3,24 +3,29 @@
 
 #include "MainLayer.h"
 
-class ViewerApplication : public Viewer::Application
+namespace Viewer
 {
-public:
-	ViewerApplication()
-		: Application("STL Viewer")
+
+	class ViewerApplication : public Viewer::Application
 	{
-		PushLayer(new MainLayer());
+	public:
+		ViewerApplication()
+			: Application("STL Viewer")
+		{
+			PushLayer(new MainLayer());
+		}
+
+		~ViewerApplication()
+		{
+
+		}
+
+	};
+
+	Application* CreateApplication()
+	{
+		return new ViewerApplication();
 	}
 
-	~ViewerApplication()
-	{
-
-	}
-
-};
-
-Viewer::Application* Viewer::CreateApplication()
-{
-	return new ViewerApplication();
 }
 

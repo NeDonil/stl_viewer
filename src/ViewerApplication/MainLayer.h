@@ -1,17 +1,27 @@
 #pragma once
 
+#include <Core\Core.h>
 #include <Core\Layer.h>
+#include <Graphics\Framebuffer.h>
 
-class MainLayer : public Viewer::Layer
+#include <glm\glm.hpp>
+
+namespace Viewer
 {
-public:
-	MainLayer();
+	class MainLayer : public Layer
+	{
+	public:
+		MainLayer();
 
-	virtual void OnAttach() override;
-	virtual void OnDetach() override;
-	virtual void OnImGuiRender() override;
-	virtual void OnUpdate(Viewer::Timestep ts) override;
+		virtual void OnAttach() override;
+		virtual void OnDetach() override;
+		virtual void OnImGuiRender() override;
+		virtual void OnUpdate(Timestep ts) override;
 
-	~MainLayer();
-private:
-};
+		~MainLayer();
+	private:
+		Ref<Framebuffer> m_Framebuffer;
+		bool m_ViewportFocused = false, m_ViewportHovered = false;
+		glm::vec2 m_ViewportSize = { 0.0f, 0.0f };
+	};
+}
