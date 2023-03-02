@@ -87,19 +87,12 @@ void MainLayer::OnImGuiRender()
 
 	ImGui::Begin("Viewport");
 
-		ImGui::Image((void*)0, ImVec2{ 200, 200 }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
+		ImGui::Image((void*)0, ImVec2{ 1000, 1000 }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
 
 	ImGui::End();
 
 	ImGui::PopStyleVar();
 
-	ImGui::Begin("Buttons");
-
-		ImGui::Button("Button1");
-		ImGui::Button("Button2");
-		ImGui::Button("Button3");
-
-	ImGui::End();
 
 	ImGui::End();
 }
